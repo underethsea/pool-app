@@ -107,14 +107,16 @@ html {
 }
 body {
   min-height:100%;
-  background: linear-gradient(334deg,#4c249f 28%,rgba(255,119,225,.9) 164%),#290b5a;
+  /* background: linear-gradient(334deg,#4c249f 28%,rgba(255,119,225,.9) 164%),#290b5a; */
+  background: linear-gradient(334deg,#24789f 28%,rgb(202 119 255 / 88%) 164%),#290b5a0d;
   color:white!important;
 }
 .column
 {
   /* background-color:#2e0a59!important;
   color:white; */
-  background: linear-gradient(334deg,#4c249f 28%,rgba(255,119,225,.9) 164%),#290b5a!important;
+  /* background: linear-gradient(334deg,#4c249f 28%,rgba(255,119,225,.9) 164%),#290b5a!important; */
+  background: linear-gradient(334deg,#24789f 28%,rgb(202 119 255 / 88%) 164%),#290b5a0d;
   color:rgb(131, 115, 115)!important;
   background-color:#341662!important;
 
@@ -169,9 +171,7 @@ body {
 .dropdown-menu{
   left:400px;
 }
-.navbar {
-  background-color: #2d0b5a!important;
-}
+
 .topData {
   display:inline-block;
   
@@ -262,9 +262,10 @@ body {
   .addressTextOldPhones {
     width:80px;
   }}
-.navbar {
-  background-color: #2d0b5a!important;
-}
+  .navbar {
+    /* background-color: #2d0b5a!important; */
+    background-color: #2d0b5a87!important;
+  }
 .card-header {
   padding:0px!important;
   font-size:18px;
@@ -337,7 +338,7 @@ body {
   mix-blend-mode: multiply;
 }
 .actionButton:hover {
-  background-color: #b8f8f266
+  background-color: #e3b8f82e
 }
 
 .expired-stamp {

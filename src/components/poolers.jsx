@@ -867,7 +867,7 @@ return (
           borderRadius: 10,
           width: 400,
           height: 300,
-          backgroundColor: "purple",
+          backgroundColor: "#477bb1",
           color: "black",
         },
         content: { inset: "34px" }
