@@ -219,6 +219,9 @@ body {
     }}
  
     @media only screen and (max-width: 500px) {
+      .wallet-div{
+        right:20px;
+      }
       .top-bar-span {
         font-size: 11px;
       }}
@@ -264,7 +267,8 @@ body {
   }}
   .navbar {
     /* background-color: #2d0b5a!important; */
-    background-color: #2d0b5a87!important;
+    /* background-color: #2d0b5a87!important; */
+    background-color: #3b166c7a!important;
   }
 .card-header {
   padding:0px!important;
@@ -319,11 +323,12 @@ body {
   -webkit-mask-size: 944px 604px; */
   mix-blend-mode: multiply;
 }
-
+.tablemax {
+  max-width:700px;
+}
 
 .actionButton {
 
-  transform: rotate(0deg);
 	color: #800080;
 	font-size: 15px;
 	font-weight: 700;
@@ -331,11 +336,11 @@ body {
 	display: inline-block;
 	padding: 2px 4px;
 	text-transform: uppercase;
-	border-radius: 1rem;
+	border-radius: 0.5rem;
 	font-family: 'Courier';
 	 /* -webkit-mask-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png');
   -webkit-mask-size: 944px 604px; */
-  mix-blend-mode: multiply;
+  /* mix-blend-mode: multiply; */
 }
 .actionButton:hover {
   background-color: #e3b8f82e

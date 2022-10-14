@@ -452,7 +452,7 @@ const [updateWallet, setUpdateWallet] = useState(0)
       return (<div>
         {balances.map(
           (object) => (<span>
-            {isConnected && object.polygon + object.ethereum + object.optimism + object.avalanche == 0 && <span className="right-float">&nbsp;&nbsp;Save to win&nbsp;&nbsp;&nbsp;</span>}
+            {/*isConnected && object.polygon + object.ethereum + object.optimism + object.avalanche == 0 && <span className="right-float">&nbsp;&nbsp;Save to win&nbsp;&nbsp;&nbsp;</span>*/}
 
             {/* <div className="div-relative"> */}   {isConnected && 
             <span className="right-float">
@@ -764,8 +764,9 @@ return (
       
       {
         /* wins.length > 0 && */
-        <div className="card-content">
-          <div className="table-wrapper has-mobile-cards">
+        <div className="card-content"><center>
+          <div className="table-wrapper has-mobile-cards tablemax">
+            <center>
             <table className="padded is-stripped table is-hoverable no-bottom">
               <thead style={{ backgroundColor: "#efefef" }}><th>
               {popup && <span>&nbsp;&nbsp;
@@ -852,8 +853,8 @@ return (
 
                     </tr>))}
               </tbody>
-            </table>
-          </div>
+            </table></center>
+          </div>   </center>
         </div>}
     </div>
     <Modal

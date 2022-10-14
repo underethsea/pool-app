@@ -80,14 +80,17 @@ function App() {
         <Router>
           <Navbar bg="light" expand="lg">
             {/* <Container> */}
-            <Navbar.Brand href="#home" className="navbarbrand">
-              <img
+            <Navbar.Brand href="#home" className="navbarbrand">            
+              <center>
+              <div className="tablemax"><img
                 src="./images/poolerson.png"
                 width="36"
                 height="36"
                 alt="explore"
-              ></img><span className="header-text hidden-mobile">
-                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</span>
+              ></img>
+              <span className="header-text hidden-mobile">
+                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; 
+                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</span>
               &nbsp;&nbsp;&nbsp;
 
               <MyConnect label="Sign in" showBalance={{
@@ -97,6 +100,8 @@ function App() {
                 smallScreen: 'avatar',
                 largeScreen: 'full',
               }} />&nbsp;&nbsp;
+              </div>
+              </center>
             </Navbar.Brand>
 
             {/* </Container> */}
