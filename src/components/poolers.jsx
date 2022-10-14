@@ -741,12 +741,7 @@ return (
             <img src="./images/wallet.svg" className='yo-soy'></img>&nbsp;
             </span>} */}
           {/* {!validAddress && addressValue !== "" && <span className="top-bar-span">&nbsp;Invalid address</span>} */}
-          &nbsp;&nbsp;{popup && <span>&nbsp;&nbsp;
-                <div
-                  className="smallLoader"
-                  style={{ display: "inline-block" }}
-                ></div>&nbsp;&nbsp;</span>
-          }
+         
           {prizesWon > 0 && !popup && (<div>
             <span className="hidden-mobile">&nbsp;&nbsp;&nbsp;&nbsp;
               <span className="numb-purp">{prizesWon}</span>
@@ -769,6 +764,12 @@ return (
           <div className="table-wrapper has-mobile-cards">
             <table className="padded is-stripped table is-hoverable no-bottom">
               <thead style={{ backgroundColor: "#efefef" }}><th>
+              {popup && <span>&nbsp;&nbsp;
+          <div
+            className="smallLoader"
+            style={{ display: "inline-block" }}
+          ></div>&nbsp;&nbsp;</span>
+    }
               {!isConnected && <span className="right-float">Connect your wallet amigo</span>}
 
                 <Deposits />
