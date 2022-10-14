@@ -746,7 +746,7 @@ return (
             </span>} */}
           {/* {!validAddress && addressValue !== "" && <span className="top-bar-span">&nbsp;Invalid address</span>} */}
          
-          {prizesWon > 0 && !popup && (<div>
+          {/* {prizesWon > 0 && !popup && (<div>
             <span className="hidden-mobile">&nbsp;&nbsp;&nbsp;&nbsp;
               <span className="numb-purp">{prizesWon}</span>
               WINS&nbsp;&nbsp;&nbsp;&nbsp;</span>
@@ -754,7 +754,7 @@ return (
               <span className="numb-purp">{separator(totalPrizeValue)}</span> WON</span>&nbsp;&nbsp;&nbsp;&nbsp;
 
 
-          </div>)}
+          </div>)} */}
           {/* {prizesWon === 0 && !popup && addressValue !== "" && validAddress && <span className="top-bar-span">&nbsp;
     No wins yet, friend.</span>} */}
           {xp > 0 ? (
