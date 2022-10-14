@@ -871,7 +871,7 @@ return (
         <div className="closeModal close" onClick={() => closeModal()}></div>
         {modalFocus === "claim" && <div>
 
-          {isConnected && <div>  <span className="numb-purp"> {address.slice(0, 5)}</span> claiming for <span className="numb-purp"> {poolerAddress.slice(0, 5)}</span><br></br>
+          {isConnected && <div>   Claiming prizes for <span className="numb-purp"> {address.slice(0, 5)}</span><br></br>
 
             {filterClaimsNetworkAndExpiry(claimable, chain.name, currentDrawId).length === 0 ? <><br></br>Switch networks, no prizes</> : <>
               <img src="../images/trophy.png" className="emoji" />
