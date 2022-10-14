@@ -456,12 +456,14 @@ const [updateWallet, setUpdateWallet] = useState(0)
 
             {/* <div className="div-relative"> */}   {isConnected && <span>
               <span className="open-wallet right-float" onClick={() => {openWallet();}}> 
-              <span className="actionButton right-float">DEPOSIT NOW</span><br></br>
+              <span className="actionButton right-float">DEPOSIT NOW</span>
+              </span>
+              <br></br>
               {object.polygon + object.ethereum + object.optimism + object.avalanche > 0 && 
               
               <span className="open-wallet" onClick={() => {openWalletWithdraw();}}> 
               <span className="actionButton right-float">WITHDRAW</span></span>}
-               </span>
+               
               
 
               {/* &nbsp;<span className="wallet-message">*beta*</span> */}
