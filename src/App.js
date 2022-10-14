@@ -6,7 +6,7 @@
 
 import Poolers from "./components/poolers.jsx"
 
-import {MyConnect} from "./components/myConnect.jsx"
+import { MyConnect } from "./components/myConnect.jsx"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
 
@@ -60,12 +60,12 @@ function App() {
       publicProvider()
     ]
   );
-  
+
   const { connectors } = getDefaultWallets({
     appName: 'My RainbowKit App',
     chains
   });
-  
+
   const wagmiClient = createClient({
     autoConnect: true,
     connectors,
@@ -75,37 +75,47 @@ function App() {
   return (
 
     <WagmiConfig client={wagmiClient}>
-    <RainbowKitProvider chains={chains}  modalSize="compact" >
+      <RainbowKitProvider chains={chains} modalSize="compact" >
 
-    <Router>
-      <Navbar bg="light" expand="lg">
-        {/* <Container> */}
-        <Navbar.Brand href="#home" className="navbarbrand">
-          <img
-            src="./images/poolerson.png"
-            width="36"
-            height="36"
-            alt="explore"
-          ></img><span className="header-text hidden-mobile">
-          &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</span>
-          &nbsp;&nbsp;&nbsp;
-       
-   <MyConnect label="Sign in" showBalance={{
-    smallScreen: false,
-    largeScreen: true,
-  }} accountStatus={{
-    smallScreen: 'avatar',
-    largeScreen: 'full',
-  }}/>&nbsp;&nbsp;
-        </Navbar.Brand>
-        
-        {/* </Container> */}
-      </Navbar>
+        <Router>
+          <Navbar bg="light" expand="lg">
+            {/* <Container> */}
+            <Navbar.Brand href="#home" className="navbarbrand">
+              <img
+                src="./images/poolerson.png"
+                width="36"
+                height="36"
+                alt="explore"
+              ></img><span className="header-text hidden-mobile">
+                &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;&nbsp; &nbsp;&nbsp;&nbsp;</span>
+              &nbsp;&nbsp;&nbsp;
 
-      <Poolers />
-    </Router>
-    </RainbowKitProvider>
+              <MyConnect label="Sign in" showBalance={{
+                smallScreen: false,
+                largeScreen: true,
+              }} accountStatus={{
+                smallScreen: 'avatar',
+                largeScreen: 'full',
+              }} />&nbsp;&nbsp;
+            </Navbar.Brand>
+
+            {/* </Container> */}
+          </Navbar>
+
+          <Poolers />
+          <span className="github boticon">
+            <a href="https://github.com/underethsea/pool-app" target="_blank">
+            <img src="./images/github.png"></img></a>
+          </span>
+          <span className="discord boticon">
+            <a href="https://pooltogether.com/discord" target="_blank">
+            <img src="./images/discord.png"></img></a>
+          </span>
+
+        </Router>
+      </RainbowKitProvider>
     </WagmiConfig>
+
   );
 }
 

@@ -453,3 +453,16 @@ cursor: pointer;}
 .margint {
 margin-top:3px;
 }
+.github {
+  margin-right:25px;
+  width: 30px;
+  
+}
+.discord {
+  margin-right:10px;
+  width: 35px;
+  
+}
+.boticon {
+  float:right;
+}
