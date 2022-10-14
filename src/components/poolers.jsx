@@ -433,7 +433,7 @@ const [updateWallet, setUpdateWallet] = useState(0)
     // console.log("data",claimData)
 
     try {
-      let claimParams = processClaimParameters(poolerAddress, claimable, chain.name, currentDrawId)
+      let claimParams = processClaimParameters(address, claimable, chain.name, currentDrawId)
       
       claimWrite({ recklesslySetUnpreparedArgs: [claimParams.address, claimParams.drawIds, claimParams.winningPicks] })
       toast("Claiming!", {
@@ -728,7 +728,7 @@ useEffect(() => {
     goGetPlayer();
   }
 
-}, [isConnected,updateWallet,poolerAddress, waitSuccess, approveWaitSuccess, depositWaitSuccess, withdrawWaitSuccess]);
+}, [address,isConnected,updateWallet,poolerAddress, waitSuccess, approveWaitSuccess, depositWaitSuccess, withdrawWaitSuccess]);
 
 return (
   <div className="transactions section">
