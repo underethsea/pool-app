@@ -449,5 +449,7 @@ cursor: pointer;}
 }
 .right-float {
   float:right;
-  margin-top:3px;
+}
+.margint {
+margin-top:3px;
 }

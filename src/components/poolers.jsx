@@ -454,15 +454,16 @@ const [updateWallet, setUpdateWallet] = useState(0)
           (object) => (<span>
             {isConnected && object.polygon + object.ethereum + object.optimism + object.avalanche == 0 && <span className="right-float">&nbsp;&nbsp;Save to win&nbsp;&nbsp;&nbsp;</span>}
 
-            {/* <div className="div-relative"> */}   {isConnected && <span>
-              <span className="open-wallet right-float" onClick={() => {openWallet();}}> 
-              <span className="actionButton right-float">DEPOSIT NOW</span>
+            {/* <div className="div-relative"> */}   {isConnected && 
+            <span className="right-float">
+              <span className="open-wallet" onClick={() => {openWallet();}}> 
+              <span className="actionButton">DEPOSIT NOW</span>
               </span>
               <br></br>
               {object.polygon + object.ethereum + object.optimism + object.avalanche > 0 && 
               
               <span className="open-wallet" onClick={() => {openWalletWithdraw();}}> 
-              <span className="actionButton right-float">WITHDRAW</span></span>}
+              <span className="actionButton margint right-float">WITHDRAW</span></span>}
                
               
 
@@ -665,13 +666,13 @@ async function getPlayer() {
   setBalances([])
   setWins([])
   const currentTimestamp = parseInt(Date.now() / 1000);
-console.log("getting player ",poolerAddress)
-  let poolerBalances = await getBalances(poolerAddress, currentTimestamp)
+console.log("getting player ",address)
+  let poolerBalances = await getBalances(address, currentTimestamp)
   setBalances(poolerBalances)
 
-  let setPooler = await getPooler(poolerAddress)
+  let setPooler = await getPooler(address)
 
-  let poolerClaims = await GetClaimsHistory(poolerAddress)
+  let poolerClaims = await GetClaimsHistory(address)
   // console.log("claims:", poolerClaims)
 
   // removed XP for speed
@@ -696,11 +697,12 @@ console.log("getting player ",poolerAddress)
   // console.log("claimable wins", claimable)
 
 }
-useEffect(() => {
 
-// if(isConnected && poolerAddress === "") {setPrizesWon(0); setBalances([]);setPoolerAddress(address);setAddressValue(address)}
+// useEffect(() => {
 
-},[isConnected])
+// // if(isConnected && poolerAddress === "") {setPrizesWon(0); setBalances([]);setPoolerAddress(address);setAddressValue(address)}
+
+// },[isConnected])
 
 const setPoolerToWallet = () => {
   console.log("setting poooler to wallet")
@@ -721,12 +723,12 @@ useEffect(() => {
     await getPlayer()
   }
   console.log("triggered poolerAddress change")
-  if (poolerAddress !== "" && isValidAddress(poolerAddress)) {
+  if (isValidAddress(address)) {
     console.log("getting pooler")
     goGetPlayer();
   }
 
-}, [updateWallet,poolerAddress, waitSuccess, approveWaitSuccess, depositWaitSuccess, withdrawWaitSuccess]);
+}, [isConnected,updateWallet,poolerAddress, waitSuccess, approveWaitSuccess, depositWaitSuccess, withdrawWaitSuccess]);
 
 return (
   <div className="transactions section">
