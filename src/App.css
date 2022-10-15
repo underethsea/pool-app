@@ -107,6 +107,7 @@ html {
 }
 body {
   min-height:100%;
+  padding-bottom:40px;
   /* background: linear-gradient(334deg,#4c249f 28%,rgba(255,119,225,.9) 164%),#290b5a; */
   background: linear-gradient(334deg,#24789f 28%,rgb(202 119 255 / 88%) 164%),#290b5a0d;
   color:white!important;
@@ -302,7 +303,7 @@ body {
 	font-family: 'Courier';
 	 /* -webkit-mask-image: url('https://s3-us-west-2.amazonaws.com/s.cdpn.io/8399/grunge.png');
   -webkit-mask-size: 944px 604px; */
-  mix-blend-mode: multiply;
+/*   mix-blend-mode: multiply; */
 }
 
 .purple-hover:hover{
