@@ -5,13 +5,16 @@
 
 
 import Poolers from "./components/poolers.jsx"
-
+import Account from "./components/account.jsx"
+import Home from "./components/home.jsx"
 import { MyConnect } from "./components/myConnect.jsx"
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./App.css";
+import Banner from "./components/banner.jsx"
 
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 import { Navbar, Nav, NavDropdown } from "react-bootstrap";
+
 
 import '@rainbow-me/rainbowkit/dist/index.css';
 
@@ -106,8 +109,10 @@ function App() {
 
             {/* </Container> */}
           </Navbar>
-
-          <Poolers />
+          <center>
+          <Banner />
+          {/* <Poolers /> */}
+          <Home />
           <span className="github boticon">
             <a href="https://github.com/underethsea/pool-app" target="_blank">
             <img src="./images/github.png"></img></a>
@@ -116,7 +121,7 @@ function App() {
             <a href="https://pooltogether.com/discord" target="_blank">
             <img src="./images/discord.png"></img></a>
           </span>
-
+          </center>
         </Router>
       </RainbowKitProvider>
     </WagmiConfig>

@@ -4,10 +4,10 @@ import React, { useState, useEffect, useCallback } from "react";
 import Select from "react-select";
 import Modal from "react-modal";
 import "./modal.css";
+import {MyConnect} from "./myConnect.jsx"
+
 // import distributorAbi from "./distributor.json"
 import { GetClaimsHistory } from "./getClaimsHistory.jsx"
-import UsdcWinners from "./v4winners";
-
 import prizeDistributorAbi from "./distributor.json"
 import { ethers } from "ethers";
 import {
@@ -248,7 +248,7 @@ const ticketBalance = (balances, chain) => {
 
 }
 
-function Poolers() {
+function Account() {
 
   const { connector: activeConnector, address, isConnecting, isDisconnected, isConnected } = useAccount({
     onConnect({ address, connector, isReconnected }) {
@@ -272,6 +272,8 @@ function Poolers() {
   const [addressValue, setAddressValue] = useState("");
 
   const [wins, setWins] = useState([]);
+  const [winsShown, setWinsShown] = useState([])
+  const [showMore, setShowMore] = useState(false)
   const [prizesWon, setPrizesWon] = useState(0);
   const [totalPrizeValue, setTotalPrizeValue] = useState(0);
   const [balances, setBalances] = useState([null]);
@@ -662,11 +664,12 @@ useEffect(() => {
 // }, [balances]);
 async function getBalancesAndApprovals() {
 }
-async function getPlayer() {
+async function getPlayer(fullList) {
 
   setPopup(true)
   setBalances([])
   setWins([])
+  setWinsShown([])
   const currentTimestamp = parseInt(Date.now() / 1000);
 console.log("getting player ",address)
   let poolerBalances = await getBalances(address, currentTimestamp)
@@ -691,7 +694,10 @@ console.log("getting player ",address)
   let claimableToSet = winsToFilter.filter(win => { return win.draw >= (currentDrawId - 30) && win.claimed === false })
   claimableToSet = claimableToSet.filter(win => win.draw !== currentDrawId)
   setClaimable(claimableToSet)
-  setWins(winResult.result)
+  if(fullList) {
+    setWinsShown(winResult.result);setShowMore(false)
+  } else {  setShowMore(true);setWinsShown(winResult.result.slice(0,5))
+  }
   // setGotSome(true)
   setPrizesWon(winResult.prizes)
   setTotalPrizeValue(winResult.total)
@@ -733,7 +739,8 @@ useEffect(() => {
 }, [address,isConnected,updateWallet,poolerAddress, waitSuccess, approveWaitSuccess, depositWaitSuccess, withdrawWaitSuccess]);
 
 return (
-  <div className="transactions section">
+    <div>
+{/*   <div className="transactions section"> */}
     <div >
    
 {/* 
@@ -766,45 +773,49 @@ return (
       
       {
         /* wins.length > 0 && */
-        <div className="card-content"><center>
-          {prizesWon === 0 && !popup && addressValue !== "" ? <>
-    {/* No wins yet, friend.<br/> */}
-    <UsdcWinners short={true}/></>:
-          <div className="table-wrapper has-mobile-cards tablemax">
+        
+        <div className="card-content">
             <center>
-            <table className="padded is-stripped table is-hoverable no-bottom">
-              <thead style={{ backgroundColor: "#efefef" }}><th>
+                {isConnected &&
+          <div className="table-wrapper has-mobile-cards tablemax connecttable">
+            <center>
+            <table className="padded is-stripped table is-hoverable no-bottom connectbg">
+              <thead className="connectbg"><th>
               {popup && <span>&nbsp;&nbsp;
           <div
             className="smallLoader"
             style={{ display: "inline-block" }}
-          ></div>&nbsp;&nbsp;</span>
+          ></div>
+          
+          
+          &nbsp;&nbsp;</span>
     }
-              {!isConnected && <span className="right-float">Connect your wallet amigo</span>}
-
+              {/* {!isConnected && <span className="right-float">Want to pool and win? <MyConnect /></span>} */}
                 <Deposits />
-
 
               </th></thead>
             </table>
             <table className="padded is-stripped table is-hoverable">
               <thead>
                 {/* https://i.ibb.co/0Jgj6DL/pooly44.png */}
-              {/* {addressValue === "" ? <UsdcWinners /> : ""}  */}
+              {/* {addressValue === "" ? <tr><td className="tdcenter"><img src="./images/yolo_nolo.png" className="cool-pooly" /></td></tr> : ""}  */}
 
-
-
+{/* {prizesWon === 0 && !popup && addressValue !== "" && <tr><td className="tdcenter">
+    No wins yet, friend.<br/> 
+    <img src="./images/yolo_nolo.png" className="cool-pooly" />
+    </td></tr>} */}
+    
 
                
-                {prizesWon > 0 && (<tr>
-                  <th>Prize Wins&nbsp;&nbsp;</th>
+                {prizesWon > 0 & isConnected ? (<tr>
+                  <th>Prize Wins&nbsp;&nbsp;{prizesWon > 0 && <span>({prizesWon})</span>}</th>
                   <th>Draw</th>
                   <th style={{ textAlign: "right" }} className="hidden-mobile">Network</th>
-                </tr>)}
+                </tr>):""}
               </thead>
               <tbody>
-                {prizesWon > 0 &&
-                  wins.map((item) => (
+                {prizesWon > 0 & isConnected ?
+                  winsShown.map((item) => (
                     <tr>
                       <td>
                         <div className="addressText">
@@ -854,10 +865,13 @@ return (
                       </td>
 
 
-                    </tr>))}
+                    </tr>)):"" }
+                    
+                    {showMore & isConnected & prizesWon > 5 ? <tr><td>              <span className="open-wallet" onClick={() => {getPlayer(true)}}> 
+See more ---&gt;</span></td></tr> : ""}
               </tbody>
             </table></center>
-          </div> }  </center>
+          </div>  } </center>
         </div>}
     </div>
     <Modal
@@ -918,7 +932,7 @@ return (
             /> {chain.name}<br></br><br></br>
 
             {allowances.polygon !== undefined && <div className="amount-container">
-              <table><tr><td>
+              <table  className="not-pad"><tr><td>
                 <img src="./images/usdc.png" className="icon" alt="USDC" /> USDC &nbsp;</td>
                 <td style={{ textAlign: "right" }}>
 
@@ -977,7 +991,7 @@ return (
 
             {/* {balances.polygon !== undefined &&  */}
             <div className="amount-container">
-              <table><tr><td>
+              <table  className="not-pad"><tr><td>
                 <img src="./images/ptausdc.png" className="icon" alt="USDC" /> PTaUSDC &nbsp;</td>
                 <td style={{ textAlign: "right" }}>
 
@@ -1017,4 +1031,4 @@ return (
 
 )
 }
-export default Poolers;
+export default Account;
