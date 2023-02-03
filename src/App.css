@@ -372,6 +372,10 @@ a.dropdown-item:hover {
 .transactions .card .card-header {
   background-color: #eee5fc;
 }
+.send-button{
+  border:1px solid black;
+  border-radius:10px;
+}
 .card-header-title {
   padding-top: 1.2rem !important;
 }

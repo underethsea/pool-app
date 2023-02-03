@@ -958,14 +958,14 @@ See more ---&gt;</span></td></tr> : ""}
 
 
             {parseFloat(allowances[chain.name.toLowerCase()]) / 1e6 >= parseFloat(inputAmount) && parseFloat(allowances[chain.name.toLowerCase()]) !== 0 ?
-              <button onClick={() => depositTo()} className="myButton purple-hover">
+              <button onClick={() => depositTo()} className="myButton purple-hover send-button">
                 {/* {depositLoading && "DEPOSITING..."}
                   {depositIdle && "DEPOSIT"}
                   {isDepositError && "DEPOSIT ERROR, TRY AGAIN"}
                   {depositWaitSuccess && "DEPOSIT SUCCESSFUL"} */}
                 DEPOSIT
               </button>
-              : <button onClick={() => approve()} className="myButton purple-hover">
+              : <button onClick={() => approve()} className="myButton purple-hover send-button">
                 {/* {approveLoading && "APPROVING..."}
                   {approveIdle && "APPROVE"}
                   {isApproveError && "APPROVE ERROR, TRY AGAIN"}
@@ -1014,7 +1014,7 @@ See more ---&gt;</span></td></tr> : ""}
               </table></div>
               {/* } */}
 
-            <button onClick={() => withdrawFrom()} className="myButton purple-hover">
+            <button onClick={() => withdrawFrom()} className="myButton purple-hover send-button">
 
               WITHDRAW
             </button>
